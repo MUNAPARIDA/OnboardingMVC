@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "CheckStatus";
+}
+
+<h2>Your Status</h2>
+
+<div class="col-md-12 box">
+    <h3></h3>
+    <p style="color: green;text-align:center;font-size:larger">
+
+        @if (@ViewBag.Status == true)
+        {
+
+    <p>
+        Congratulations!  You got Shortlisted.Please Wait for Further Instructions.
+
+
+
+        @Html.ActionLink("Accept", "Accept")
+        @Html.ActionLink("Reject", "ConfirmReject")
+
+    </p>
+
+
+
+        
+
+
+
+}
+    else
+    {
+        <p>
+            Your Profile has not been reviewed.Please Wait for some time.
+
+        </p>
+    }
+
+
+
+
+
+
+
+
+
+    </div>

@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "SuccessUpload";
+}
+
+
+
+<hr />
+<div class="jumbotron">
+    <h3>Upload of documents was successful !!! </h3>
+
+</div>
+@*<div>
+    <div>
+        <h4>View Documents</h4>
+    </div>
+    <div>
+        @Html.ActionLink("Document 1 ", "DownLoadFile", new { name = "docOne", })
+
+    </div>
+    <div>
+        @Html.ActionLink("Document 2 ", "DownLoadFile", new { name = "docTwo", })
+    </div>
+
+</div>*@
+@Html.ActionLink("Return to Home", "Index", "Home", routeValues: null, htmlAttributes: new { @class = "btn btn-default", style = "white-space: normal" })
+
+

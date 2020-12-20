@@ -1,0 +1,79 @@
+﻿
+@model IEnumerable<OnBoardingGIC.Models.ApplicationUser>
+@{
+    ViewBag.Title = "ListUsers";
+}
+
+<h2>Candidate List</h2>
+
+@if (Model.Any())
+{
+<table class="table">
+    <tr>
+        <th>
+            Name :
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.Id != "a6ef0fee-eedd-43ff-9216-65be7e7154ae" && item.Id != "be33affb-426e-492f-bf4e-67a0674677c6")
+        {
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                </td>
+                <td>
+                    @* @if (item.Accepted == false)
+        {
+            @Html.ActionLink("Accept", "ChangeStatus", new { id = item.Id }, new { @class = "btn ", @style = "color:blue" })
+        }
+        else
+        {
+            @Html.ActionLink("Reject", "ChangeStatus", new { id = item.Id }, new { @class = "btn ", @style = "color:blue" })
+        }*@
+                    @* @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+
+                    @Html.ActionLink("Send Offer", "OfferSend", new { id = item.Id})
+                </td>
+                <td>
+                </td>
+            </tr>
+        }
+    }
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+}
+else
+{
+    <div class="col-md-4 box">
+        <h2>No Candidates Have completed their Profile.</h2>
+        <p>Please Wait</p>
+
+    </div>
+}
+

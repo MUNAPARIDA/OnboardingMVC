@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<div class="jumbotron">
+    <h1>ToolKIT On Boarding </h1>
+    @if (User.Identity.IsAuthenticated)
+    {
+        if (User.IsInRole("Candidate"))
+        {
+            <h2>Welcome Candidate</h2>
+        }
+        else if (User.IsInRole("HRConsultant"))
+        {
+            <h2>Welcome HR Consultant</h2>
+
+        }
+        else if (User.IsInRole("HRManager"))
+        {
+            <h2>Welcome HR Manager</h2>
+        }
+        else
+        {
+            <h2>Welcome</h2>
+        }
+
+    }
+    @*<p class="lead"></p>
+        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
+</div>
+@*@if (User.Identity.IsAuthenticated)
+{
+    <h1>
+        @User.Identity.Name Profile Image ..
+
+        <img src="@Url.Action("UserPhotos", "Home" )" style="width:160px;height:160px; background: #FFFFFF;
+    margin: auto;
+    -moz-border-radius: 60px;
+    border-radius: 100px;
+    padding: 6px;
+    box-shadow: 0px 0px 20px #888;" />
+    </h1>
+}*@
+
+<div class="row">
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Candidate"))
+    {
+    <div class="col-md-4 box">
+        <h3>Check Offer Status</h3>
+        <p>
+            Check if your profile got shortlisted.
+        </p>
+        @Html.ActionLink("Check >>", "CheckStatus", "Document", routeValues: null, htmlAttributes: new { @class = "btn btn-default", style = "white-space: normal" })
+    </div>
+    }
+    else
+    {
+        <div class="col-md-4 box">
+            <h3>My Pay Portal</h3>
+            <p>
+                Payroll app for India associates  to view / update different payroll related transactions.
+            </p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        </div>
+    }
+    @{
+        if (User.Identity.IsAuthenticated)
+        {
+            if (User.IsInRole("Candidate"))
+            {
+                <div class="col-md-4 box">
+                    <h3>Upload documents Section</h3>
+                    <p>Upload Mandatory documents for OnBoarding Process.</p>
+                    @Html.ActionLink("Upload Documents >>", "CheckUpload", "Document", routeValues: null, htmlAttributes: new { @class = "btn btn-default", style = "white-space: normal" })
+                </div>
+            }
+            else if (User.IsInRole("HRConsultant"))
+            {
+                <div class="col-md-4 box">
+                    <h3>Add Candidates</h3>
+                    <p>Add Candidates to the Onboarding Portal.</p>
+                    @Html.ActionLink("Add Candidates >>", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-default", style = "white-space: normal" })
+                </div>
+
+            }
+            else if (User.IsInRole("HRManager"))
+            {
+                <div class="col-md-4 box">
+                    <h3>View Candidates</h3>
+                    <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+                    @Html.ActionLink("View Candidates >>", "ListUsers", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-default", style = "white-space: normal" })
+                </div>
+
+            }
+        }
+        else
+        {
+            <div class="col-md-4 box">
+                <h3>Associate Portal</h3>
+                <p>App to manage personal, professional profile and support.</p>
+                <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+            </div>
+        }
+
+
+
+
+    }
+
+    <div class="col-md-4 box">
+        <h3>Company Policy</h3>
+        <p>Company policy and procedures are basically set in place to establish the rules of conduct within an organization.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>
